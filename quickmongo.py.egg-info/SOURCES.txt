@@ -1,0 +1,8 @@
+README.md
+setup.cfg
+setup.py
+quickmongo/__init__.py
+quickmongo.py.egg-info/PKG-INFO
+quickmongo.py.egg-info/SOURCES.txt
+quickmongo.py.egg-info/dependency_links.txt
+quickmongo.py.egg-info/top_level.txt
