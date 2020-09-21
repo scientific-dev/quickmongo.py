@@ -3,20 +3,14 @@ QuickMongo.py
 By Science Spot from Decimal Developement
 
 Simple wrapper for PyMongo written in python!
+v0.0.6
 """
-# v0.0.1
-__version__ ='0.0.1'
+
+# v0.0.6
+__version__ ='0.0.6'
 
 # Import mongo client from pymongo
 from pymongo import MongoClient
-
-# Import time package
-from time import time
-
-# Default Options
-defaultOptions = {
-    'collection_name': 'python'
-}
 
 # Util Class
 
@@ -37,9 +31,9 @@ class Util():
 class Base():
 
     # Constructor Class
-    def __init__(self, mongoURL: str, dbname: str, options: dict = defaultOptions):
-        self.client = MongoClient(mongoURL)
-        self.db = self.client[dbname]
+    def __init__(self, client, options: dict = {}):
+        self.client = client
+        self.db = self.client[options['db_name']]
         self.options = options
         self.collection = self.db[self.options['collection_name']]
 
@@ -56,7 +50,10 @@ class Base():
 
     def get(self, key):
         try:
-            return self.collection.find({ 'key': key })[0]['value']
+            try:
+                return self.collection.find({ 'key': key })[0]['value']
+            except:
+                return self.collection.find({ 'key': key })[0]
         except:
             return None
 
@@ -65,10 +62,13 @@ class Base():
         res = []
         
         for doc in list(data):
-            res.append({
-                'key': doc['key'],
-                'value': doc['value']
-            })
+            try:
+                res.append({
+                    'key': doc['key'],
+                    'value': doc['value']
+                })
+            except:
+                return list(data)
 
         return res
 
@@ -84,21 +84,33 @@ class Base():
 # Database Class which is the main class
 class Database():
 
-    def __init__(self, mongoURL: str, dbname: str, options: dict = defaultOptions):
-        self.base = Base(mongoURL, dbname, options)
+    def __init__(self, mongoURL: str, options: dict = {}):
+        try:
+            self.client = MongoClient(mongoURL)
+        except:
+            raise TypeError('invalid mongo link provided!')
+
+        database_names = self.client.list_database_names()
+
+        if 'db_name' not in options.keys():
+            options['db_name'] = database_names[0]
+        elif options['db_name'] not in database_names:
+            raise TypeError('try to choose a db from here: ' + database_names)
+
+        if 'collection_name' not in options.keys():
+            options['collection_name'] = 'python'
+
+        self.base = Base(self.client, options)
         self.options = options
         self.client = self.base.client
         self.db = self.base.db
         self.collection = self.base.collection
 
-        if dbname not in self.base.client.list_database_names():
-            raise TypeError('invalid database provided! select any from them: ' + str(self.base.client.list_database_names()))
-
     def all_database_names(self):
         return self.base.client.list_database_names()
 
-    def database_exists(self, dbname: str):
-        if dbname not in self.base.client.list_database_names():
+    def database_exists(self, db_name: str):
+        if db_name not in self.base.client.list_database_names():
             return False
         return True
 
