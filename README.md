@@ -1,8 +1,8 @@
 # QuickMongo.py
 
 Simple wrapper for PyMongo written in python! This module is for those who don't know pymongo but want to use it but if you are using for a very large scale things i aka Science Spot will prefer you to use PyMongo or other Database because it might be slow but will not matter alot until you are doing multiple Operations with it!
-
-> **WARNINGS:** Quickmongo.py stores data as {'key': str, 'value': any} so if incase if it misses key and value keys in dict in collection it will return you an error. I will fix this error in next update...
+ 
+> **WARNINGS:** Quickmongo.py stores data as {'key': str, 'value': any} so if you stored values for the document something else, it will give you key error mostly.... So try to keep a seperate collection for **QuickMongo.Py**. It will store in **python** collection as deault collection name...
 
 # Quick Docs
 
@@ -18,10 +18,10 @@ pip install quickmongo.py
 from quickmongo import Database
 
 # If you are using locally
-db = Database('mongodb://localhost:27017/', 'local')
+db = Database('mongodb://localhost:27017/', {'db_name': 'local'})
 
 # if you are using 'mongodb+srv://' uri then you should do something like this
-db = Database(mongoURL, clusterName)
+db = Database(mongoURL)
 # mongourl will be the 'mongodb+srv://' uri link
 # clusterName will be the name of the mongoose cluster. Eg:- Cluster0
 # Incase if you don't know what is your clustername you will get an TypeError with available clusters!
@@ -33,7 +33,8 @@ Set some options for your database as a dict which is optional
 
 ```py
 options = {
-    'collection_name': 'yourCollectionName' # Collection name will be 'python' as default
+    'collection_name': 'yourCollectionName', # Collection name will be 'python' as default
+    'db_name': 'Cluster0' # This is optional unless you are using localhost you have to set it to local!
 }
 
 db = Database(mongoURL, clusterName, options)
