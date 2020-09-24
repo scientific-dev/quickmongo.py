@@ -27,6 +27,26 @@ db = Database(mongoURL)
 # Incase if you don't know what is your clustername you will get an TypeError with available clusters!
 ```
 
+## Events
+
+Events is way to trigger your function on paticular times!
+
+```py
+from quickmongo import Database
+
+def my_ready_function():
+    print('Database is ready')
+
+db = Database(
+    mongoURL='your mongo uri here',
+    events={
+        'ready': my_ready_function
+    }
+)
+
+# Will run that function if everything is ok else will throw error
+```
+
 ## Options of Databases
 
 Set some options for your database as a dict which is optional
