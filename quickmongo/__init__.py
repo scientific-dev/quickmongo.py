@@ -3,11 +3,11 @@ QuickMongo.py
 By Science Spot from Decimal Developement
 
 Simple wrapper for PyMongo written in python!
-v0.0.7
+v0.0.8
 """
 
-# v0.0.7
-__version__ ='0.0.7'
+# v0.0.8
+__version__ ='0.0.8'
 
 # Import Time
 from time import time
@@ -60,7 +60,10 @@ class Database():
             try:
                 readyCallback(param)
             except TypeError:
-                raise TypeError('ready callback function must have 1 parameter')
+                try:
+                    readyCallback()
+                except TypeError:
+                    raise TypeError('ready callback function must have 1 parameter')
 
     def all_database_names(self):
         return self.base.client.list_database_names()
