@@ -3,88 +3,27 @@ QuickMongo.py
 By Science Spot from Decimal Developement
 
 Simple wrapper for PyMongo written in python!
-v0.0.6
+v0.0.7
 """
 
-# v0.0.6
-__version__ ='0.0.6'
+# v0.0.7
+__version__ ='0.0.7'
+
+# Import Time
+from time import time
 
 # Import mongo client from pymongo
 from pymongo import MongoClient
 
-# Util Class
-
-class Util():
-
-    # Startswith filter
-    def startswith(self, data, query: str):
-        result = []
-
-        for doc in data:
-            if(doc['key'].startswith(query)):
-                result.append(doc)
-
-        return result
-
-
-# Base Class with basic things: Set, Get, Delete, All...
-class Base():
-
-    # Constructor Class
-    def __init__(self, client, options: dict = {}):
-        self.client = client
-        self.db = self.client[options['db_name']]
-        self.options = options
-        self.collection = self.db[self.options['collection_name']]
-
-    def set(self, key, value):
-        self.collection.delete_many({
-            'key': key
-        })
-        
-        self.collection.insert_one({
-            'key': key,
-            'value': value
-        })
-        return
-
-    def get(self, key):
-        try:
-            try:
-                return self.collection.find({ 'key': key })[0]['value']
-            except:
-                return self.collection.find({ 'key': key })[0]
-        except:
-            return None
-
-    def all(self):
-        data = self.collection.find({})
-        res = []
-        
-        for doc in list(data):
-            try:
-                res.append({
-                    'key': doc['key'],
-                    'value': doc['value']
-                })
-            except:
-                return list(data)
-
-        return res
-
-    def drop(self):
-        self.collection.drop()
-
-    def delete(self, key: str):
-        self.collection.delete_many({
-            'key': key
-        })
-        return
+# Import files
+from .Util import Util, AttrDict
+from .Base import Base
 
 # Database Class which is the main class
 class Database():
 
-    def __init__(self, mongoURL: str, options: dict = {}):
+    def __init__(self, mongoURL: str, options: dict = {}, events: dict = {}):
+        startedAt = time()
         try:
             self.client = MongoClient(mongoURL)
         except:
@@ -105,6 +44,23 @@ class Database():
         self.client = self.base.client
         self.db = self.base.db
         self.collection = self.base.collection
+
+        for callback in events.values():
+            if not callable(callback):
+                raise TypeError('event parameter dict values must contain a function')
+
+        if 'ready' in events.keys():
+            readyCallback = events['ready']
+            param = AttrDict({
+                'started_at': startedAt,
+                'connected_at': time(),
+                'time_took_to_connect': time() - startedAt
+            })
+
+            try:
+                readyCallback(param)
+            except TypeError:
+                raise TypeError('ready callback function must have 1 parameter')
 
     def all_database_names(self):
         return self.base.client.list_database_names()
