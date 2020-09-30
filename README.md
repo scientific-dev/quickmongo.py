@@ -1,7 +1,5 @@
 <div align="center">
   <img src="https://github.com/Scientific-Guy/decimaldev/blob/master/assets/Quickmongo.png?raw=true">
-  <font>Very simple wrapper for pymongo</font><br>
-  <font></font>
   <div>
     <a href="https://pypi.org/project/quickmongo.py/"><img src="https://img.shields.io/pypi/l/quickmongo.py?label=License"></a>
     <a href="https://pypi.org/project/quickmongo.py/"><img src="https://img.shields.io/pypi/v/quickmongo.py?label=Version"></a>
