@@ -8,6 +8,9 @@
   </div><br>
 </div>
 
+# Quick Intro
+Quickmongo.py is a quick wrapper for pymongo to access mongodb! You can use pymongo if you know it!
+
 # Quick Docs
 
 ## Installation
