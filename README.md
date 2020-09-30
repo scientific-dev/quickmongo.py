@@ -1,10 +1,10 @@
 <div align="center">
   <img src="https://github.com/Scientific-Guy/decimaldev/blob/master/assets/Quickmongo.png?raw=true">
   <div>
-    <a href="https://pypi.org/project/quickmongo.py/"><img src="https://img.shields.io/pypi/l/quickmongo.py?label=License"></a>
-    <a href="https://pypi.org/project/quickmongo.py/"><img src="https://img.shields.io/pypi/v/quickmongo.py?label=Version"></a>
-    <a href="https://pypi.org/project/quickmongo.py/"><img src="https://img.shields.io/pypi/format/quickmongo.py?label=Format"></a>
-    <a href="https://github.com/Scientific-Guy/quickmongo.py/"><img src="https://img.shields.io/github/repo-size/scientific-guy/quickmongo.py?label=Size"></a>
+    <a href="https://pypi.org/project/quickmongo.py/"><img src="https://img.shields.io/pypi/l/quickmongo.py?label=License&style=for-the-badge"></a>
+    <a href="https://pypi.org/project/quickmongo.py/"><img src="https://img.shields.io/pypi/v/quickmongo.py?label=Version&style=for-the-badge"></a>
+    <a href="https://pypi.org/project/quickmongo.py/"><img src="https://img.shields.io/pypi/format/quickmongo.py?label=Format&style=for-the-badge"></a>
+    <a href="https://github.com/Scientific-Guy/quickmongo.py/"><img src="https://img.shields.io/github/repo-size/scientific-guy/quickmongo.py?label=Size&style=for-the-badge"></a>
   </div><br>
 </div>
 
