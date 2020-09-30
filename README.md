@@ -1,8 +1,7 @@
+# QuickMongo.py
+
 <div align="center">
-  <h1>QuickMongo.py<h1>
-  <div>
-    <a href=""><img src="https://img.shields.io/discord/736099894963601438?color=7289DA&label=discord"
-  </div>
+  <a href="https://discord.gg/FrduEZd"><img src="https://img.shields.io/discord/736099894963601438?color=7289DA&label=discord"></a>
 </div>
 
 Simple wrapper for PyMongo written in python! This module is for those who don't know pymongo but want to use it but if you are using for a very large scale things i aka Science Spot will prefer you to use PyMongo or other Database because it might be slow but will not matter alot until you are doing multiple Operations with it!
