@@ -1,4 +1,6 @@
-# QuickMongo.py
+<div align="center">
+ # QuickMongo.py
+</div>
 
 Simple wrapper for PyMongo written in python! This module is for those who don't know pymongo but want to use it but if you are using for a very large scale things i aka Science Spot will prefer you to use PyMongo or other Database because it might be slow but will not matter alot until you are doing multiple Operations with it!
  
