@@ -1,5 +1,5 @@
 <div align="center">
-  <h1 style="font-size: 100px;">QuickMongo.py</h1>
+  <font style="font-size: 100px;">QuickMongo.py</font>
   <div>
     <a href="https://pypi.org/project/quickmongo.py/"><img src="https://img.shields.io/pypi/l/quickmongo.py?label=License"></a>
     <a href="https://pypi.org/project/quickmongo.py/"><img src="https://img.shields.io/pypi/v/quickmongo.py?label=Version"></a>
