@@ -1,15 +1,12 @@
 <div align="center">
-  <font style="font-size: 100px;">QuickMongo.py</font>
+  <h1>QuickMongo.py</h1>
+  <font>Very simple wrapper for pymongo</font>
   <div>
     <a href="https://pypi.org/project/quickmongo.py/"><img src="https://img.shields.io/pypi/l/quickmongo.py?label=License"></a>
     <a href="https://pypi.org/project/quickmongo.py/"><img src="https://img.shields.io/pypi/v/quickmongo.py?label=Version"></a>
     <a href="https://github.com/Scientific-Guy/quickmongo.py/"><img src="https://img.shields.io/github/repo-size/scientific-guy/quickmongo.py?label=Size"></a>
   </div><br>
 </div>
-
-Simple wrapper for PyMongo written in python! This module is for those who don't know pymongo but want to use it but if you are using for a very large scale things i aka Science Spot will prefer you to use PyMongo or other Database because it might be slow but will not matter alot until you are doing multiple Operations with it!
- 
-> **WARNINGS:** Quickmongo.py stores data as {'key': str, 'value': any} so if you stored values for the document something else, it will give you key error mostly.... So try to keep a seperate collection for **QuickMongo.Py**. It will store in **python** collection as default collection name...
 
 # Quick Docs
 
