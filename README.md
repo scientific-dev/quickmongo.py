@@ -1,5 +1,5 @@
 <div align="center">
-  <h1>QuickMongo.py</h1>
+  <img src="https://github.com/Scientific-Guy/decimaldev/blob/master/assets/Quickmongo.png?raw=true">
   <font>Very simple wrapper for pymongo</font>
   <div>
     <a href="https://pypi.org/project/quickmongo.py/"><img src="https://img.shields.io/pypi/l/quickmongo.py?label=License"></a>
