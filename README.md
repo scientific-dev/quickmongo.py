@@ -5,6 +5,7 @@
     <a href="https://pypi.org/project/quickmongo.py/"><img src="https://img.shields.io/pypi/v/quickmongo.py?label=Version&style=for-the-badge"></a>
     <a href="https://pypi.org/project/quickmongo.py/"><img src="https://img.shields.io/pypi/format/quickmongo.py?label=Format&style=for-the-badge"></a>
     <a href="https://github.com/Scientific-Guy/quickmongo.py/"><img src="https://img.shields.io/github/repo-size/scientific-guy/quickmongo.py?label=Size&style=for-the-badge"></a>
+    <a href="https://discord.gg/FrduEZd"><img src="https://img.shields.io/discord/736099894963601438?label=Discord&style=for-the-badge"></a>
   </div><br>
 </div>
 
