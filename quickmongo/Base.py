@@ -1,21 +1,21 @@
 # Import MongoClient from PyMongo
 from pymongo import MongoClient
 
+# Import Any from typing
+from typing import Any
+
 # Base Class aka raw database
 class Base():
 
     # Constructor Class
-    def __init__(self, client, options: dict = {}):
+    def __init__(self, client: Any, options: dict = {}):
         self.client = client
         self.db = self.client[options['db_name']]
         self.options = options
         self.collection = self.db[self.options['collection_name']]
 
     def set(self, key, value):
-        self.collection.delete_many({
-            'key': key
-        })
-        
+        self.collection.delete_many({ 'key': key }) 
         self.collection.insert_one({
             'key': key,
             'value': value
