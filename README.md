@@ -35,26 +35,6 @@ db = Database(mongoURL)
 # Incase if you don't know what is your clustername you will get an TypeError with available clusters!
 ```
 
-## Events
-
-Events is way to trigger your function on paticular times!
-
-```py
-from quickmongo import Database
-
-def my_ready_function():
-    print('Database is ready')
-
-db = Database(
-    mongoURL='your mongo uri here',
-    events={
-        'ready': my_ready_function
-    }
-)
-
-# Will run that function if everything is ok else will throw error
-```
-
 ## Options of Databases
 
 Set some options for your database as a dict which is optional
@@ -65,8 +45,8 @@ options = {
     'db_name': 'Cluster0' # This is optional unless you are using localhost you have to set it to local!
 }
 
-db = Database(mongoURL, clusterName, options)
-# mongoURL and clusterName is described above
+db = Database(mongoURL, options)
+# mongoURL is described above
 ```
 
 ## Get databases and collections
@@ -100,10 +80,35 @@ db.set('foo', 1) # Simple set function given description above
 db.add('foo', 2) # Will add 2 to the old value. So the current value will be 3
 db.subtract('foo', 1) # Will subtract 1 from old value of the key 'foo'. So the current value will be 1
 
+db.math('foo', '*', 5) # Will multiply value by 5 so 1*5 = 5
+db.math('foo', '**', 5) # 5**5 = 25
+db.math('foo', '/', 5) # 25/5 = 5
+db.math('foo', '+', 1) # 5+1 = 6
+db.math('foo', '-', 1) # 6-1 = 5
+
 db.typeof('foo') # Its currently int so it will return <class 'int'>
 ```
 
-> Currently this package is under developement! But still this package works very well!
+## Events
+
+Events are functions which will trigger on paticular times
+
+**Ready Event:**
+```py
+def ready():
+    print('Connected with database')
+
+db = Database(
+    mongoURL='your-url',
+    events={
+        'ready': ready
+    }
+)
+
+# Will run ready callback when db is ready!
+```
+
+> Contribute codes to this packages by github [here](https://github.com/Scientific-Guy/quickmongo.py)
 
 # Support
 
