@@ -3,11 +3,11 @@ QuickMongo.py
 By Science Spot from Decimal Developement
 
 Simple wrapper for PyMongo written in python!
-v0.0.8
+v0.0.9
 """
 
-# v0.0.8
-__version__ ='0.0.8'
+# v0.0.9
+__version__ ='0.0.9'
 
 # Import Time
 from time import time
@@ -15,26 +15,35 @@ from time import time
 # Import mongo client from pymongo
 from pymongo import MongoClient
 
+# Import any type from typings
+from typing import Any
+
 # Import files
-from .Util import Util, AttrDict
+from .Util import *
 from .Base import Base
+from .Exception import *
+from .EventHandler import Events
 
 # Database Class which is the main class
-class Database():
+class Database(Events):
 
     def __init__(self, mongoURL: str, options: dict = {}, events: dict = {}):
-        startedAt = time()
+        self.started_at = time()
+        self.events = events
+        
+        super().__init__(events)
+
         try:
             self.client = MongoClient(mongoURL)
         except:
-            raise TypeError('invalid mongo link provided!')
+            raise QuickMongoError('invalid mongo link provided!')
 
         database_names = self.client.list_database_names()
 
         if 'db_name' not in options.keys():
             options['db_name'] = database_names[0]
         elif options['db_name'] not in database_names:
-            raise TypeError('try to choose a db from here: ' + database_names)
+            raise QuickMongoError('try to choose a db from here: ' + str(database_names))
 
         if 'collection_name' not in options.keys():
             options['collection_name'] = 'python'
@@ -45,80 +54,76 @@ class Database():
         self.db = self.base.db
         self.collection = self.base.collection
 
-        for callback in events.values():
-            if not callable(callback):
-                raise TypeError('event parameter dict values must contain a function')
+        self.emit('ready')
 
-        if 'ready' in events.keys():
-            readyCallback = events['ready']
-            param = AttrDict({
-                'started_at': startedAt,
-                'connected_at': time(),
-                'time_took_to_connect': time() - startedAt
-            })
+    def uptime(self) -> int:
+        return time() - self.started_at
 
-            try:
-                readyCallback(param)
-            except TypeError:
-                try:
-                    readyCallback()
-                except TypeError:
-                    raise TypeError('ready callback function must have 1 parameter')
+    def disconnect(self) -> None:
+        self.client.close()
+        self.base.client.close()
+        return
 
-    def all_database_names(self):
+    def all_database_names(self) -> list:
         return self.base.client.list_database_names()
 
-    def database_exists(self, db_name: str):
+    def database_exists(self, db_name: str) -> bool:
         if db_name not in self.base.client.list_database_names():
             return False
         return True
 
-    def all_collection_names(self):
+    def all_collection_names(self) -> list:
         return self.base.db.list_collection_names()
 
-    def collection_exists(self, name: str):
+    def collection_exists(self, name: str) -> bool:
         if name in self.base.db.list_collection_names():
             return True
         return False
 
-    def set(self, key: str, value):
-        return self.base.set(key, value)
+    def set(self, key: str, value) -> None:
+        self.base.set(key, value)
 
-    def get(self, key: str):
+    def get(self, key: str) -> Any:
         return self.base.get(key)
 
-    def all(self):
+    def all(self) -> list:
         return self.base.all()
 
-    def startsWith(self, query: str):
+    def startsWith(self, query: str) -> list:
         return Util().startswith(self.base.all(), query)
 
-    def add(self, key: str, amount: int):
+    def math(self, key: str, symbol: str, amount: int) -> None:
+        if symbol not in math_symbols:
+            raise QuickMongoError('invalid symbol provided')
+
         oldData = self.base.get(key)
 
+        if not oldData:
+            oldData = 0
+        
         if not isinstance(oldData, int):
-            raise TypeError('old data is not an int!')
+            raise ValueNotIntError('old data is not an int!')
 
-        self.base.set(key, oldData + amount)
+        newData = math_operations.get(symbol)(oldData, amount)
 
-    def subtract(self, key: str, amount: int):
-        oldData = self.base.get(key)
+        self.base.set(key, newData)
 
-        if not isinstance(oldData, int):
-            raise TypeError('old data is not an int!')
+    def add(self, key: str, amount: int) -> None:
+        self.math(key, '+', amount)
 
-        self.base.set(key, oldData - amount)
+    def subtract(self, key: str, amount: int) -> None:
+        self.math(key, '-', amount)
 
-    def exists(self, key: str):
+    def exists(self, key: str) -> bool:
         if not self.base.get(key):
             return False
         return True
 
-    def typeof(self, key: str):
+    def typeof(self, key: str) -> Any:
         return type(self.base.get(key))
 
-    def deleteAll(self):
-        return self.base.drop()
+    def deleteAll(self) -> None:
+        self.base.drop()
 
-    def delete(self, key: str):
-        return self.base.delete(key)
+    def delete(self, key: str) -> None:
+        self.base.delete(key)
