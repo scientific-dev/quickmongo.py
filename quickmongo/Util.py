@@ -13,10 +13,31 @@ class Util():
 
         return result
 
-# To make dict to an object
-
+# Convert dict to attr
 class AttrDict():
 
-    def __init__(self, paramdict: dict):
-        for key in paramdict:
-            setattr(self, key, paramdict[key])
+    def __init__(self, arg: dict):
+        for key in arg.keys():
+            setattr(self, key, arg[key])
+
+# Math Functions
+def add(a: int, b:int):
+    return a + b
+def subtract(a: int, b:int):
+    return a - b
+def multiply(a: int, b:int):
+    return a * b
+def divide(a: int, b:int):
+    return a / b
+def power(a: int, b:int):
+    return a ** b
+
+# Variables
+math_symbols = ['+', '-', '/', '**', '*']
+math_operations = {
+    '+': add,
+    '-': subtract,
+    '*': multiply,
+    '/': divide,
+    '**': power
+}
