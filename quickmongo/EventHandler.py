@@ -1,5 +1,4 @@
 # Import Util
-from .Util import event_lib as lib
 from .Util import AttrDict
 
 # Import Erros

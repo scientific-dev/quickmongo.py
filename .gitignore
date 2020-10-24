@@ -1,0 +1,5 @@
+# Testing files
+test.py
+
+# Pycache files
+quickmongo/__pycache__/
