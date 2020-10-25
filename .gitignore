@@ -7,3 +7,4 @@ quickmongo/__pycache__/
 # Distribution files
 build/
 dist/
+quickmongo.py.egg-info/
