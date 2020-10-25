@@ -70,7 +70,7 @@ db.set('foo', 'bar') # Will set value 'bar' for the key 'foo'
 db.get('foo') # Will return 'bar' which is the value of the key 'foo'
 
 db.all() # Will return all keys and values of the collection! {'key': 'foo', 'value': 'bar'} as a dict
-db.startsWith('f') # Will sort all data whose keys startswith 'f' as {'key': 'foo', 'value': 'bar'}
+db.startswith('f') # Will sort all data whose keys startswith 'f' as {'key': 'foo', 'value': 'bar'}
 
 db.delete('foo') # Will delete value of the key 'foo'
 db.delete_all() # Will delete all values of the all keys! Simple drop() function

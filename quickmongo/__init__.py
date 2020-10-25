@@ -19,12 +19,9 @@ from pymongo import MongoClient
 from typing import Any
 
 # Import files
-from .Util import *
+from .Util import startswith
 from .Base import Base
 from .Exception import *
-
-# Make the util class ready
-util = Util()
 
 # Database Class which is the main class
 class Database():
@@ -82,8 +79,8 @@ class Database():
     def all(self) -> list:
         return self.base.all()
 
-    def startsWith(self, query: str) -> list:
-        return util.startswith(self.base.all(), query)
+    def startswith(self, query: str) -> list:
+        return startswith(self.base.all(), query)
 
     def math(self, key: str, symbol: str, amount: int) -> None:
         if symbol not in math_symbols:

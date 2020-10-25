@@ -1,24 +1,15 @@
 # Util Class
 # Some functions which are different from Base
 
-class Util():
+# Filter for startswith()
+def startswith(self, data, query: str):
+    result = []
 
-    # Startswith filter
-    def startswith(self, data, query: str):
-        result = []
+    for doc in data:
+        if(doc['key'].startswith(query)):
+            result.append(doc)
 
-        for doc in data:
-            if(doc['key'].startswith(query)):
-                result.append(doc)
-
-        return result
-
-# Convert dict to attr
-class AttrDict():
-
-    def __init__(self, arg: dict):
-        for key in arg.keys():
-            setattr(self, key, arg[key])
+    return result
 
 # Math Functions
 def add(a: int, b:int):
