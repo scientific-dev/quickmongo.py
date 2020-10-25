@@ -1,13 +1,13 @@
 """
 QuickMongo.py
-By Science Spot from Decimal Developement
+By Science Spot from Decimal Development
 
 Simple wrapper for PyMongo written in python!
-v0.0.9
+v1.0.0 | MIT License
 """
 
-# v0.0.9
-__version__ ='0.0.9'
+# v1.0.0
+__version__ ='1.0.0'
 
 # Import Time
 from time import time

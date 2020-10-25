@@ -8,7 +8,7 @@ def readme():
 setup(
     name="quickmongo.py",
     url="https://github.com/Scientific-Guy/quickmongo.py",
-    version="0.0.9",
+    version="1.0.0",
     description="A simple and quick wrapper for pymongo!",
     long_description=readme(),
     long_description_content_type="text/markdown",
