@@ -62,9 +62,7 @@ class Database():
         return self.base.client.list_database_names()
 
     def database_exists(self, db_name: str) -> bool:
-        if db_name not in self.base.client.list_database_names():
-            return False
-        return True
+        return [db_name not in self.base.client.list_database_names()]
 
     def all_collection_names(self) -> list:
         return self.base.db.list_collection_names()
