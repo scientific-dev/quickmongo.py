@@ -3,3 +3,7 @@ test.py
 
 # Pycache files
 quickmongo/__pycache__/
+
+# Distribution files
+build/
+dist/
