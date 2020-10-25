@@ -23,6 +23,9 @@ from .Util import *
 from .Base import Base
 from .Exception import *
 
+# Make the util class ready
+util = Util()
+
 # Database Class which is the main class
 class Database():
 
@@ -62,15 +65,13 @@ class Database():
         return self.base.client.list_database_names()
 
     def database_exists(self, db_name: str) -> bool:
-        return [db_name not in self.base.client.list_database_names()]
+        return db_name not in self.base.client.list_database_names()
 
     def all_collection_names(self) -> list:
         return self.base.db.list_collection_names()
 
     def collection_exists(self, name: str) -> bool:
-        if name in self.base.db.list_collection_names():
-            return True
-        return False
+        return name in self.base.db.list_collection_names()
 
     def set(self, key: str, value) -> None:
         self.base.set(key, value)
@@ -82,7 +83,7 @@ class Database():
         return self.base.all()
 
     def startsWith(self, query: str) -> list:
-        return Util().startswith(self.base.all(), query)
+        return util.startswith(self.base.all(), query)
 
     def math(self, key: str, symbol: str, amount: int) -> None:
         if symbol not in math_symbols:
@@ -107,14 +108,12 @@ class Database():
         self.math(key, '-', amount)
 
     def exists(self, key: str) -> bool:
-        if not self.base.get(key):
-            return False
-        return True
+        return bool(self.base.get(key))
 
     def typeof(self, key: str) -> Any:
         return type(self.base.get(key))
 
-    def deleteAll(self) -> None:
+    def delete_all(self) -> None:
         self.base.drop()
 
     def delete(self, key: str) -> None:
