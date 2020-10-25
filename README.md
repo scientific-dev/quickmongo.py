@@ -73,7 +73,7 @@ db.all() # Will return all keys and values of the collection! {'key': 'foo', 'va
 db.startsWith('f') # Will sort all data whose keys startswith 'f' as {'key': 'foo', 'value': 'bar'}
 
 db.delete('foo') # Will delete value of the key 'foo'
-db.deleteAll() # Will delete all values of the all keys! Simple drop() function
+db.delete_all() # Will delete all values of the all keys! Simple drop() function
 
 db.set('foo', 1) # Simple set function given description above
 
