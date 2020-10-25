@@ -22,16 +22,12 @@ from typing import Any
 from .Util import *
 from .Base import Base
 from .Exception import *
-from .EventHandler import Events
 
 # Database Class which is the main class
-class Database(Events):
+class Database():
 
-    def __init__(self, mongoURL: str, options: dict = {}, events: dict = {}):
+    def __init__(self, mongoURL: str, options: dict = {}):
         self.started_at = time()
-        self.events = events
-        
-        super().__init__(events)
 
         try:
             self.client = MongoClient(mongoURL)
@@ -53,8 +49,6 @@ class Database(Events):
         self.client = self.base.client
         self.db = self.base.db
         self.collection = self.base.collection
-
-        self.emit('ready')
 
     def uptime(self) -> int:
         return time() - self.started_at
