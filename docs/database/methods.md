@@ -31,6 +31,7 @@ db.typeof('foo') # Its currently int so it will return <class 'int'>
 **Returns:** None
 
 **Parameters:**
+
 | Name  | Type   | Description |
 |-------|--------|-------------|
 | key   | string | ID          |
@@ -41,6 +42,7 @@ db.typeof('foo') # Its currently int so it will return <class 'int'>
 **Returns:** Any
 
 **Parameters:**
+
 | Name | Type | Description |
 |------|------|-------------|
 | key  | string | ID |
@@ -56,6 +58,7 @@ db.typeof('foo') # Its currently int so it will return <class 'int'>
 **Returns:** List
 
 **Parameters:**
+
 | Name | Type | Description |
 |------|------|-------------|
 | text | string | To filter with startswith |
@@ -65,6 +68,7 @@ db.typeof('foo') # Its currently int so it will return <class 'int'>
 **Returns:** None
 
 **Parameters:**
+
 | Name | Type | Description |
 |------|------|-------------|
 | key  | string | ID |
@@ -80,6 +84,7 @@ db.typeof('foo') # Its currently int so it will return <class 'int'>
 **Returns:** Type
 
 **Parameters:**
+
 | Name | Type | Description |
 |------|------|-------------|
 | key  | string | ID |
@@ -89,6 +94,7 @@ db.typeof('foo') # Its currently int so it will return <class 'int'>
 **Returns:** Number
 
 **Parameters:**
+
 | Name | Type | Description |
 |------|------|-------------|
 | key  | string | ID |
