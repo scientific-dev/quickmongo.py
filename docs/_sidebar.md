@@ -1,6 +1,7 @@
 - [Home](/)
 - [Installation](/installation)
 - [Version](/version)
-- [Database](/database)
+- [Database](/)
    - [Creating a Database](/database/creating-a-database)
    - [Database Options](/database/database-options)
+   - [Databases and Collections](/databases/databases-and-collections)
