@@ -31,10 +31,10 @@ db.typeof('foo') # Its currently int so it will return <class 'int'>
 **Returns:** None
 
 **Parameters:**
-| Name | Type | Description |
-|------|------|-------------|
-| key  | string | ID |
-| value | any | data |
+| Name  | Type   | Description |
+|-------|--------|-------------|
+| key   | string | ID          |
+| value | any    | data        |
 
 ## Get
 
