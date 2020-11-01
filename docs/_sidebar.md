@@ -6,3 +6,4 @@
    - [Database Options](/database/database-options)
    - [Databases and Collections](/database/databases-and-collections)
    - [Methods](/database/methods)
+   - [Utility](/database/utility-methods)
