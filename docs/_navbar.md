@@ -1,0 +1,3 @@
+- [Home](/)
+- [Pypi](https://pypi.org/project/quickmongo.py/)
+- [Discord](https://discord.gg/FrduEZd)
