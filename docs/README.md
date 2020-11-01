@@ -89,25 +89,6 @@ db.math('foo', '-', 1) # 6-1 = 5
 db.typeof('foo') # Its currently int so it will return <class 'int'>
 ```
 
-## Events
-
-Events are functions which will trigger on paticular times
-
-**Ready Event:**
-```py
-def ready():
-    print('Connected with database')
-
-db = Database(
-    mongoURL='your-url',
-    events={
-        'ready': ready
-    }
-)
-
-# Will run ready callback when db is ready!
-```
-
 > Contribute codes to this packages by github [here](https://github.com/Scientific-Guy/quickmongo.py)
 
 # Support

@@ -4,4 +4,5 @@
 - [Database](/)
    - [Creating a Database](/database/creating-a-database)
    - [Database Options](/database/database-options)
-   - [Databases and Collections](/databases/databases-and-collections)
+   - [Databases and Collections](/database/databases-and-collections)
+   - [Methods](/database/methods)
