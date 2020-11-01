@@ -1,2 +1,6 @@
 - [Home](/)
+- [Installation](/installation)
 - [Version](/version)
+- [Database](/database)
+   - [Creating a Database](/database/creating-a-database)
+   - [Database Options](/database/database-options)
