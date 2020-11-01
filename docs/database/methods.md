@@ -27,6 +27,7 @@ db.typeof('foo') # Its currently int so it will return <class 'int'>
 ```
 
 ## Set
+Set's a value for the key
 
 **Returns:** None
 
@@ -38,6 +39,7 @@ db.typeof('foo') # Its currently int so it will return <class 'int'>
 | value | any    | data        |
 
 ## Get
+Get value of the key
 
 **Returns:** Any
 
@@ -48,12 +50,14 @@ db.typeof('foo') # Its currently int so it will return <class 'int'>
 | key  | string | ID |
 
 ## All
+Returns an list of all data
 
 **Returns:** List
 
 **Parameters:** None
 
 ## Startswith
+Returns an list of all data filtered with key startswith
 
 **Returns:** List
 
@@ -64,6 +68,7 @@ db.typeof('foo') # Its currently int so it will return <class 'int'>
 | text | string | To filter with startswith |
 
 ## Delete
+Deletes a key from the database
 
 **Returns:** None
 
@@ -74,12 +79,14 @@ db.typeof('foo') # Its currently int so it will return <class 'int'>
 | key  | string | ID |
 
 ## Delete_all
+Deletes the whole database
 
 **Returns:** None
 
 **Parameters:** None
 
 ## Typeof
+Returns the type of the value of the key
 
 **Returns:** Type
 
@@ -90,6 +97,7 @@ db.typeof('foo') # Its currently int so it will return <class 'int'>
 | key  | string | ID |
 
 ## Math
+Math with the key's value
 
 **Returns:** Number
 
@@ -100,3 +108,5 @@ db.typeof('foo') # Its currently int so it will return <class 'int'>
 | key  | string | ID |
 | symbol | string | +, -, *, /, ^ |
 | amount | int | Number to do math |
+
+> You can even use add() and subtract() to make it short with key, amount as parameter...
